@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ****************************************************** -->
+<!-- ****************************************************** -->
+<!-- ***                                                *** -->
+<!-- *** A parent POM that provides some configurations *** -->
+<!-- *** typically common to most of our Maven projects *** -->
+<!-- ***                                                *** -->
+<!-- ****************************************************** -->
+<!-- ****************************************************** -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.specsavers.base</groupId>
+  <artifactId>srs-parent</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0</version>
+
+  <organization>
+    <name>Specsavers I.T (development)</name>
+    <url>http://panic/stealthwiki/index.php/Main_Page</url>
+  </organization>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+    </plugins>
+    <!-- We need this extension configured to allow older Maven -->
+    <!-- versions to deploy to Archiva using WebDav.            -->
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-webdav</artifactId>
+        <version>1.0-beta-2</version>
+      </extension>
+    </extensions>
+  </build>
+  <distributionManagement>
+    <repository>
+      <id>srs-release</id>
+      <name>Internal Release Repository</name>
+      <url>dav:http://archiva:8180/archiva/repository/srs-release</url>
+    </repository>
+    <snapshotRepository>
+      <id>srs-snapshot</id>
+      <name>Internal Snapshot Repository</name>
+      <url>dav:http://archiva:8180/archiva/repository/srs-snapshot</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <scm>
+    <connection>scm:svn:http://svn/projects/srs-parent/trunk</connection>
+    <url>http://svn/projects/srs-parent/trunk</url>
+  </scm>
+
+</project>

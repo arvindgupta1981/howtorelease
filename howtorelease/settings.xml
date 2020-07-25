@@ -1,0 +1,84 @@
+<settings>
+	<mirrors>
+		<mirror>
+			<id>s-snapshot</id>
+			<url>http://buildrepo.uk.specsavers.com:8180/archiva/repository/srs-snapshot
+			</url>
+			<mirrorOf>srs-snapshot</mirrorOf>
+		</mirror>
+		<mirror>
+			<id>external</id>
+			<url>http://buildrepo.uk.specsavers.com:8080/archiva/repository/internal
+			</url>
+			<mirrorOf>*,!srs-snapshot,!srs-release</mirrorOf>
+		</mirror>
+		<mirror>
+			<id>s-release</id>
+			<url>http://buildrepo.uk.specsavers.com:8180/archiva/repository/srs-release
+			</url>
+			<mirrorOf>srs-release</mirrorOf>
+		</mirror>
+	</mirrors>
+	<proxies>
+		<!--<proxy>
+			<active>true</active>
+			<protocol>http</protocol>
+			<host>proxy.uk.specsavers.com</host>
+			<port>8080</port>
+		</proxy>-->
+	</proxies>
+
+	<profiles>
+		<profile>
+			<id>global.repositories</id>
+			<repositories>
+				<repository>
+					<id>external</id>
+					<url>http://buildrepo.uk.specsavers.com:8080/archiva/repository/internal
+					</url>
+					<releases>
+						<enabled>true</enabled>
+						<updatePolicy>daily</updatePolicy>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>srs-snapshot</id>
+					<url>http://buildrepo.uk.specsavers.com:8180/archiva/repository/srs-snapshot
+					</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+						<updatePolicy>always</updatePolicy>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>srs-release</id>
+					<url>http://buildrepo.uk.specsavers.com:8180/archiva/repository/srs-release
+					</url>
+					<releases>
+						<enabled>true</enabled>
+						<updatePolicy>always</updatePolicy>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+						<updatePolicy>always</updatePolicy>
+					</snapshots>
+				</repository>
+
+
+
+			</repositories>
+
+		</profile>
+	</profiles>
+
+	<activeProfiles>
+		<activeProfile>global.repositories</activeProfile>
+	</activeProfiles>
+
+</settings>

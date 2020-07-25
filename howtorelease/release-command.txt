@@ -1,0 +1,10 @@
+mvn -B clean deploy release:prepare -DdryRun=true -Dresume=false -DskipTests
+mvn -B clean install release:prepare -DdryRun=true -Dresume=false -DskipTests
+mvn -B clean deploy release:prepare release:perform -Dresume=false -Prelease
+
+All the dependencies should be defined in dependency management tag in parent pom with versions.
+child pom mentioned dependencies with version numbers
+Version number should not be defined in child project arttifact id tags  and parent tag
+project.version should be defined into dependecies with in the project 
+titan-version like property should be keep for third party dependecy projets	
+
